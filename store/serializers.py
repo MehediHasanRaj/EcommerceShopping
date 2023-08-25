@@ -6,7 +6,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ('id','name','description','price','sale_start','sale_end')
 
-    def to_representation(self, instance):
+    def to_representation(self, instance): # this is used if we want to add extra data in api
         data = super().to_representation(instance)
         data['is_on_sale'] =instance.is_on_sale()
         data['current_price'] = instance.current_price()
